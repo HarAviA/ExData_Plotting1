@@ -10,3 +10,8 @@ with(subsetdata, {
 })
 legend("topright", col = c("black", "red", "blue"), lwd = c(1, 1, 1), 
        c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
+# Save file and close device
+
+dev.copy(png, file = "plot3.png", height = 480, widht = 480)
+dev.off()
