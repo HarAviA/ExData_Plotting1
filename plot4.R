@@ -1,0 +1,25 @@
+## Plot 4
+
+# Create multiple plot
+
+par(mfrow = c(2,2), mar = c(4,4,2,1), oma = c(0,0,2,0))
+with(subsetdata, {
+  plot(Global_active_power ~ Date_Time, type = "l", 
+       ylab="Global Active Power", xlab = "")
+  plot(Voltage ~ Date_Time, type = "l", 
+       ylab = "Voltage", xlab = "")
+  plot(Sub_metering_1 ~ Date_Time, type= "l", 
+       ylab= "Energy sub metering", xlab= "")
+  lines(Sub_metering_2 ~ Date_Time, col = "Red")
+  lines(Sub_metering_3 ~ Date_Time, col = "Blue")
+  legend("topright", col = c("black", "red", "blue"), lty = 1, lwd = 2, bty = "n",
+         legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), cex = 0.5,
+         box.lty = 1, box.col = 1)
+  plot(Global_reactive_power ~ Date_Time, type = "l", 
+       ylab="Global_Rective_Power", xlab = "")
+})
+
+# Save file and close device
+
+dev.copy(png, file = "plot4.png", height = 480, width = 480)
+dev.off()
